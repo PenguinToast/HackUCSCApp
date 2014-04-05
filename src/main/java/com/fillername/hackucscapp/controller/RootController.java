@@ -1,4 +1,4 @@
-package com.fillername.hackucscapp;
+package com.fillername.hackucscapp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
