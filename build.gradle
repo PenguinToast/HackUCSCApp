@@ -27,3 +27,7 @@ dependencies {
     compile("com.fasterxml.jackson.core:jackson-databind")
     testCompile("junit:junit")
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
