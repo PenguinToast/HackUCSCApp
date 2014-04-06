@@ -50,7 +50,7 @@ public class JsonController {
 			@RequestParam(value="id", required=true) int id) {
 		DetailsData out = new DetailsData(id, testName);
 		out.setWeather(testWeather);
-		out.setSwell("Wow Very Swell");
+		//out.setSwell("Wow Very Swell");
 		out.setTemperature(9001);
 		out.setSunrise(new Date());
 		out.setSunset(new Date());

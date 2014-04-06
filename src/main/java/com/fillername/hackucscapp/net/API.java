@@ -3,27 +3,22 @@ package com.fillername.hackucscapp.net;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.fillername.hackucscapp.core.BeachData;
 import com.fillername.hackucscapp.core.DataStore;
+import com.fillername.hackucscapp.core.SwellData;
 
 public class API {
 	private static API instance;
@@ -55,9 +50,28 @@ public class API {
 		List<BeachData> spotsDataList = new ArrayList<BeachData>(14);
     	for(int i = 0; i < DataStore.spotUrls.length; i++) {
     		String currSpotName = DataStore.spotUrls[i];
+    		String suffix = currSpotName.substring(currSpotName.lastIndexOf('_')+1,currSpotName.length()-1);
     		Document doc = getJsoupDocFromUrl(currSpotName);
-    		System.out.println("@@@ GOT JSOUP DOC w/ TITLE: " + doc.title());
     		BeachData currData = null; 
+    		System.out.println("@@@ GOT JSOUP DOC w/ TITLE: " + doc.title());
+    		
+    		Element forecast = doc.getElementById("forecast0");
+    		Elements times = doc.select("div.spot-forecast.spot-forecast-time");
+    		
+    		for(int j = 0; j <= 3; j++) {
+    			for(int k = 0; k <= 2; k++) {
+    				String idSuffix = j + "-" + suffix + "-" + k;
+    				
+    				Element swell1 = doc.select("spot-forecast-swell1-" + idSuffix).first();
+    				Element swell2 = doc.select("spot-forecast-swell2-" + idSuffix).first();
+    				Element swell3 = doc.select("spot-forecast-swell3-" + idSuffix).first();
+    				
+    				ArrayList<SwellData> swellDatas = new ArrayList<SwellData>();
+    				//swellDatas.add(new SwellData());
+    				//swellDatas.add(arg0);
+    				//swellDatas.add(arg0);
+        		}
+    		}
     	}
     	
 		return spotsDataList;
