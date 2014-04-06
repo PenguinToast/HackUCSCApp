@@ -188,8 +188,8 @@ background-size:100% 100%;
 		<input  style="z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
 		<input style="z-index:7;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
 		<input style="z-index:7;" type="text" name="name" id="name" placeholder="Full Name" value=""/><br><br>
-		<button style="z-index:4;"  class="ui-btn ui-corner-all" type="submit">Create Account</button>
-		<a href="#one"data-role="button" data-rel="page" data-transition="pop"> Already Have an Account </a>
+		<button style="z-index:4;position:absolute;top:50%;"  class="ui-btn ui-corner-all" type="submit">Create Account</button><br><br>
+		<a href="#one" style="top:50%;"data-role="button" data-rel="page" data-transition="pop"> Already Have an Account </a>
 
 	</form>
 	<style>
@@ -204,7 +204,6 @@ background-size:100% 100%;
  
 		
 		
-		<p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
 		
 	</div><!-- /content -->
 	
@@ -266,8 +265,8 @@ background-size:100% 100%;
 					if(data.beaches[0].weather == "Slightly Cloudy")
 						image = "CloudySunnyButton.png";
 					document.querySelector('#weather').innerHTML = "<img title='HI' href='#tab3' align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
-					document.querySelector('#names').innerHTML = "<h1>"+data.beaches[0].name+"</h1>";
-					document.querySelector('#temp').innerHTML = "<h1>"+data.beaches[0].temperature+"&#176; F</h1>";
+					document.querySelector('#names').innerHTML = "<h2>"+data.beaches[0].name+"</h2>";
+					document.querySelector('#temp').innerHTML = "<h2>"+data.beaches[0].temperature+"&#176; F</h2>";
 					getLocation(data.beaches[0].latitude, data.beaches[0].longitude, 0);
 					
 					
@@ -284,8 +283,8 @@ background-size:100% 100%;
 					if(data.beaches[1].weather == "Slightly Cloudy")
 						image = "CloudySunnyButton.png";
 					document.querySelector('#weather1').innerHTML = "<img href='#tab3' align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
-					document.querySelector('#names1').innerHTML = "<h1>"+data.beaches[1].name+"</h1>";
-					document.querySelector('#temp1').innerHTML = "<h1>"+data.beaches[1].temperature+"&#176; F</h1>";
+					document.querySelector('#names1').innerHTML = "<h2>"+data.beaches[1].name+"</h2>";
+					document.querySelector('#temp1').innerHTML = "<h2>"+data.beaches[1].temperature+"&#176; F</h2>";
 					getLocation(data.beaches[1].latitude, data.beaches[1].longitude, 1);
 				}
 			}
