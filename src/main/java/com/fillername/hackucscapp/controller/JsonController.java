@@ -78,6 +78,7 @@ public class JsonController {
 		return tideList;
 	}
 	
+	
 	@RequestMapping("/api/suns")
 	public @ResponseBody List<SunriseData> sunDataRequest(
 			@RequestParam(value="id", required=true) int id) {
