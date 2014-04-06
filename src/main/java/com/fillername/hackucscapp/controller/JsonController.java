@@ -3,7 +3,6 @@ package com.fillername.hackucscapp.controller;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
@@ -43,7 +42,9 @@ public class JsonController {
 	public @ResponseBody MapData mapRequest() {
 		MapData out = new MapData();
 		BeachMapData testBeach = new BeachMapData(testId, testName, testLong, testLat);
+		BeachMapData testBeach2 = new BeachMapData(testId, testName, testLong - 70, testLat);
 		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach2);
 		return out;	
 	}
 	
