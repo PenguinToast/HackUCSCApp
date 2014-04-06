@@ -12,7 +12,7 @@ public class DetailsData extends BeachData {
 	private String swell;
 
 	private Date sunrise, sunset;
-	private final ArrayList<Float> tides;
+	private final ArrayList<Double> tides;
 	private final ArrayList<Boolean> recommended;
 	
 	public DetailsData(int id, String name) {
@@ -62,7 +62,7 @@ public class DetailsData extends BeachData {
 		this.sunset = sunset;
 	}
 
-	public ArrayList<Float> getTides() {
+	public ArrayList<Double> getTides() {
 		return tides;
 	}
 
