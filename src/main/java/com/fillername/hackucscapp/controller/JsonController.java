@@ -40,7 +40,7 @@ public class JsonController {
 	
 	@RequestMapping("/api/details")
 	public @ResponseBody DetailsData detailsRequest(
-			@RequestParam(value="name", required=true) int id) {
+			@RequestParam(value="id", required=true) int id) {
 		DetailsData out = new DetailsData(id, testName);
 		out.setWeather(testWeather);
 		out.setSwell("Wow Very Swell");
