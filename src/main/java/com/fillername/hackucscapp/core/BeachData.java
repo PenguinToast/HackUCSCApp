@@ -1,5 +1,8 @@
 package com.fillername.hackucscapp.core;
 
+/**
+ * Base class for beach data, holds id and name
+ */
 public class BeachData {
 	private final int id;
 	private final String name;

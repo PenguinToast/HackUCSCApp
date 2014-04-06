@@ -11,7 +11,9 @@ import com.fillername.hackucscapp.core.scrape.LoginManager;
 public class Application {
 
     public static void main(String[] args) {
+    	// Run the server
         SpringApplication.run(Application.class, args);
+        // TODO: Delete this line, it is only for testing login
         LoginManager.getInstance().login();
     }
 }

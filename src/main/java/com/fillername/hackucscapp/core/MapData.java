@@ -1,6 +1,20 @@
 package com.fillername.hackucscapp.core;
 
+import java.util.ArrayList;
+
+/**
+ * Data for the map screen in order to display points on Google Maps
+ */
 public class MapData {
+	private final ArrayList<BeachMapData> beaches;
+	
+	public MapData() {
+		beaches = new ArrayList<>();
+	}
+	
+	public ArrayList<BeachMapData> getBeaches() {
+		return beaches;
+	}
 
 	public static class BeachMapData extends BeachData {
 		private final double longitude;
