@@ -29,13 +29,13 @@ public class JsonController {
 	@RequestMapping("/api/recommendations")
 	public @ResponseBody RecommendationsData recommendationsRequest() {
 		RecommendationsData out = new RecommendationsData();
-		BeachRecommendationData testBeach = new BeachRecommendationData(4188, "Steamer Lane", -122.024, 36.9539);
+		BeachRecommendationData testBeach = new BeachRecommendationData(4188, "Steamer's", -122.0242, 36.9539);
 		testBeach.setWeather("Sunny");
 		testBeach.setTemperature(70);
-		BeachRecommendationData testBeach2 = new BeachRecommendationData(5022, "Scott Creek", -121.9, 37.467);
+		BeachRecommendationData testBeach2 = new BeachRecommendationData(5022, "Scott Creek", -121.0241292, 36.9538399);
 		testBeach.setWeather("Sunny");
 		testBeach.setTemperature(66);
-		BeachRecommendationData testBeach3 = new BeachRecommendationData(5024, "Davenport", -122.196, 37.0135);
+		BeachRecommendationData testBeach3 = new BeachRecommendationData(5024, "Davenport", -122.1972, 37.0181);
 		testBeach.setWeather("Sunny");
 		testBeach.setTemperature(72);
 		out.getBeaches().add(testBeach);
