@@ -15,4 +15,5 @@ public class JsonController {
 			@RequestParam(value="name", required=false, defaultValue="defaultName") String name) {
 		return new TestObject(name);
 	}
+
 }
