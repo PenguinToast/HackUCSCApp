@@ -57,13 +57,13 @@ public class JsonController {
 		
 		List<TideData> t = DataStore.getTideList();
 		for(int i = 0; i < t.size(); i++) {
-			out.getTides().set(i, t.get(i).getHeight());
+			out.getTides().add(t.get(i).getHeight());
 			System.out.println(t.get(i).getHeight());
 		}
 		
 		List<SunriseData> s = DataStore.getSunriseList();
 		for(int i = 0; i < s.size(); i++) {
-			out.getSunrises().set(i, s.get(i).getSunriseOrSunset());
+			out.getSunrises().add(s.get(i).getSunriseOrSunset());
 			System.out.println(s.get(i).getSunriseOrSunset());
 		}
 		

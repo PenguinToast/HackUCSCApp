@@ -138,7 +138,7 @@ public class API {
 			System.out.println("!!!! " + tide.getHeight());
 		}
 		
-		return null;
+		return currData;
 	}
 	
 	public List<SunriseData> getSunrises() {

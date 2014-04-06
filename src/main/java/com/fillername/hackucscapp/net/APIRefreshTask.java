@@ -24,7 +24,6 @@ public class APIRefreshTask implements Runnable {
 			try {
 				DataStore.setSunriseList(API.get().getSunrises());
 				DataStore.setTideList(API.get().getTideDatas());
-				
 				Thread.sleep(REFRESH_INTERVAL);
 			} catch (Exception e) {
 				e.printStackTrace();
