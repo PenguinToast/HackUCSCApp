@@ -29,22 +29,30 @@ public class JsonController {
 	@RequestMapping("/api/recommendations")
 	public @ResponseBody RecommendationsData recommendationsRequest() {
 		RecommendationsData out = new RecommendationsData();
-		BeachRecommendationData testBeach = new BeachRecommendationData(testId, testName, testLong, testLat);
-		testBeach.setWeather(testWeather);
-		testBeach.setTemperature(9001);
+		BeachRecommendationData testBeach = new BeachRecommendationData(4188, "Steamer Lane", -122.024, 36.9539);
+		testBeach.setWeather("Sunny");
+		testBeach.setTemperature(70);
+		BeachRecommendationData testBeach2 = new BeachRecommendationData(5022, "Scott Creek", -121.9, 37.467);
+		testBeach.setWeather("Sunny");
+		testBeach.setTemperature(66);
+		BeachRecommendationData testBeach3 = new BeachRecommendationData(5024, "Davenport", -122.196, 37.0135);
+		testBeach.setWeather("Sunny");
+		testBeach.setTemperature(72);
 		out.getBeaches().add(testBeach);
-		out.getBeaches().add(testBeach);
-		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach2);
+		out.getBeaches().add(testBeach3);
 		return out;
 	}
 	
 	@RequestMapping("/api/map")
 	public @ResponseBody MapData mapRequest() {
 		MapData out = new MapData();
-		BeachMapData testBeach = new BeachMapData(testId, testName, testLong, testLat);
-		BeachMapData testBeach2 = new BeachMapData(testId, testName, testLong - 70, testLat);
+		BeachMapData testBeach = new BeachMapData(4188, "Steamer Lane", -122.024, 36.9539);
+		BeachMapData testBeach2 = new BeachMapData(5022, "Scott Creek", -121.9, 37.467);
+		BeachMapData testBeach3 = new BeachMapData(5024, "Davenport", -122.196, 37.0135);
 		out.getBeaches().add(testBeach);
 		out.getBeaches().add(testBeach2);
+		out.getBeaches().add(testBeach3);
 		return out;	
 	}
 	
