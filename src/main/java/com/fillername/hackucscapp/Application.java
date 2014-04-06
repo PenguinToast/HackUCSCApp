@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.fillername.hackucscapp.core.scrape.LoginManager;
+import com.fillername.hackucscapp.net.APIRefreshTask;
 
 @ComponentScan
 @EnableAutoConfiguration
@@ -15,5 +16,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
         // TODO: Delete this line, it is only for testing login
         LoginManager.getInstance().login();
+        Thread apiRefreshThread = new Thread(new APIRefreshTask());
+        apiRefreshThread.start();
     }
 }
