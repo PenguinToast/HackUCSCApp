@@ -9,8 +9,9 @@ import java.util.Date;
 public class DetailsData extends BeachData {
 	private int temperature;
 	private String weather;
-	private String swell;
-
+	private ArrayList<SwellData> swells;
+	private ArrayList<String> swellTimes;
+	
 	private Date sunrise, sunset;
 	private final ArrayList<Double> tides;
 	private final ArrayList<Boolean> recommended;
@@ -38,14 +39,6 @@ public class DetailsData extends BeachData {
 		this.weather = weather;
 	}
 
-	public String getSwell() {
-		return swell;
-	}
-
-	public void setSwell(String swell) {
-		this.swell = swell;
-	}
-
 	public Date getSunrise() {
 		return sunrise;
 	}
@@ -68,5 +61,13 @@ public class DetailsData extends BeachData {
 
 	public ArrayList<Boolean> getRecommended() {
 		return recommended;
+	}
+	
+	public ArrayList<String> getSwellTimes() {
+		return swellTimes;
+	}
+
+	public void setSwellTimes(ArrayList<String> swellTimes) {
+		this.swellTimes = swellTimes;
 	}
 }
