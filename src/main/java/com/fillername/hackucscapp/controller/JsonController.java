@@ -1,17 +1,23 @@
 package com.fillername.hackucscapp.controller;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fillername.hackucscapp.core.BeachData;
 import com.fillername.hackucscapp.core.DetailsData;
 import com.fillername.hackucscapp.core.MapData;
 import com.fillername.hackucscapp.core.MapData.BeachMapData;
 import com.fillername.hackucscapp.core.RecommendationsData;
 import com.fillername.hackucscapp.core.RecommendationsData.BeachRecommendationData;
+import com.fillername.hackucscapp.net.API;
 
 @Controller
 public class JsonController {
@@ -55,5 +61,30 @@ public class JsonController {
 		}
 		return out;
 	}
-
+	
+	@RequestMapping("/api/realDetails")
+	public @ResponseBody DetailsData realDetailsRequest(
+			@RequestParam(value="id", required=true) int id) {
+		try {
+			List<BeachData> weatherDats = API.get().getWeatherData();
+			System.out.println("GOT DATS");
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//DetailsData out = new DetailsData(id, testName);
+		//out.setWeather(testWeather);
+		//out.setSwell("Wow Very Swell");
+		///out.setTemperature(9001);
+		//out.setSunrise(new Date());
+		//out.setSunrise(new Date());
+		//int numPoints = 4 * 7;
+		//for (int i = 0; i < numPoints; i++) {
+		//	out.getTides().add(Math.sin(i));
+		//	out.getRecommended().add(Math.sin(i) > 0 ? true : false);
+		//}
+		return null;//out;
+	}
 }
