@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>graph</title>
+  <script src="mime.js"></script>
+</head>
+<body>
+  <canvas id="myChart" width="550px" height="550px"></canvas>
+  <script>
+  
+  var str = location.search;
+  var str = str[str.length - 1];
+
+  //Get the context of the canvas element we want to select
+console.log(document);
+var omg;
+getData();
+
+	var ctx = document.getElementById("myChart").getContext("2d");
+
+function drawRect() {
+    ctx.fillStyle = "#fF0000";
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(0, 0, 100, 100);
+
+}
+
+function getData()  {
+	var xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			var data=JSON.parse(xmlhttp.responseText);
+			omg = data.tides;
+console.log(omg);
+var data = {
+	labels : omg,
+	datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "rgba(220,220,220,1)",
+			pointStrokeColor : "#fff",
+			data : omg
+		}
+	]
+	};
+
+options = {
+    onAnimationComplete : drawRect
+};
+
+var chart = new Chart(ctx).Line(data, options);
+		}
+}
+	xmlhttp.open("GET","http://penguintoast.no-ip.biz:8080/api/details?id=" + str ,true);
+	xmlhttp.send();
+}
+
+  </script>
+</body>
+</html>
