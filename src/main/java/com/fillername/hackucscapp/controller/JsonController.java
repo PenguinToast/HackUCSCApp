@@ -1,23 +1,22 @@
 package com.fillername.hackucscapp.controller;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fillername.hackucscapp.core.BeachData;
+import com.fillername.hackucscapp.core.DataStore;
 import com.fillername.hackucscapp.core.DetailsData;
 import com.fillername.hackucscapp.core.MapData;
 import com.fillername.hackucscapp.core.MapData.BeachMapData;
 import com.fillername.hackucscapp.core.RecommendationsData;
 import com.fillername.hackucscapp.core.RecommendationsData.BeachRecommendationData;
-import com.fillername.hackucscapp.net.API;
+import com.fillername.hackucscapp.core.SunriseData;
+import com.fillername.hackucscapp.core.TideData;
 
 @Controller
 public class JsonController {
@@ -48,43 +47,30 @@ public class JsonController {
 	@RequestMapping("/api/details")
 	public @ResponseBody DetailsData detailsRequest(
 			@RequestParam(value="id", required=true) int id) {
+		
 		DetailsData out = new DetailsData(id, testName);
 		out.setWeather(testWeather);
-		//out.setSwell("Wow Very Swell");
-		out.setTemperature(9001);
-		out.setSunrise(new Date());
-		out.setSunset(new Date());
-		int numPoints = 4 * 7;
-		for (int i = 0; i < numPoints; i++) {
-			out.getTides().add(Math.sin(i));
-			out.getRecommended().add(Math.sin(i) > 0 ? true : false);
+		ArrayList<TideData> t = (ArrayList<TideData>) DataStore.getTideList();
+		for(int i = 0; i < t.size(); i++) {
+			out.getTides().set(i, t.get(i));
 		}
+		
 		return out;
 	}
 	
-	@RequestMapping("/api/realDetails")
-	public @ResponseBody DetailsData realDetailsRequest(
+	@RequestMapping("/api/tides")
+	public @ResponseBody List<TideData> tideDataRequest(
 			@RequestParam(value="id", required=true) int id) {
-		try {
-			List<BeachData> weatherDats = API.get().getWeatherData();
-			System.out.println("GOT DATS");
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		List<TideData> tideList = DataStore.getTideList();
+		return tideList;
+	}
+	
+	@RequestMapping("/api/suns")
+	public @ResponseBody List<SunriseData> sunDataRequest(
+			@RequestParam(value="id", required=true) int id) {
 		
-		//DetailsData out = new DetailsData(id, testName);
-		//out.setWeather(testWeather);
-		//out.setSwell("Wow Very Swell");
-		///out.setTemperature(9001);
-		//out.setSunrise(new Date());
-		//out.setSunrise(new Date());
-		//int numPoints = 4 * 7;
-		//for (int i = 0; i < numPoints; i++) {
-		//	out.getTides().add(Math.sin(i));
-		//	out.getRecommended().add(Math.sin(i) > 0 ? true : false);
-		//}
-		return null;//out;
+		List<SunriseData> sunList = DataStore.getSunriseList();
+		return sunList;//out;
 	}
 }
