@@ -10,6 +10,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
+/**
+ * Filter to make allow all websites to access the data on this server
+ */
 @Component
 public class SimpleCORSFilter implements Filter {
 

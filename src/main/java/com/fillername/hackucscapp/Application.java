@@ -12,7 +12,9 @@ import com.fillername.hackucscapp.net.APIRefreshTask;
 public class Application {
 
     public static void main(String[] args) {
+    	// Run the server
         SpringApplication.run(Application.class, args);
+        // TODO: Delete this line, it is only for testing login
         LoginManager.getInstance().login();
         Thread apiRefreshThread = new Thread(new APIRefreshTask());
         apiRefreshThread.start();
