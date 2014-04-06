@@ -22,6 +22,8 @@ public class DetailsData extends BeachData {
 		
 		tides = new ArrayList<>();
 		recommended = new ArrayList<>();
+		sunrises = new ArrayList<Date>();
+		tides = new ArrayList<Double>();
 	}
 	
 	public int getTemperature() {
