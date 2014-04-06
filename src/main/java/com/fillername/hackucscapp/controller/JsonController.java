@@ -1,18 +1,22 @@
 package com.fillername.hackucscapp.controller;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fillername.hackucscapp.TestObject;
+import com.fillername.hackucscapp.core.DetailsData;
+import com.fillername.hackucscapp.core.RecommendationsData;
 
 @Controller
 public class JsonController {
 	
-	@RequestMapping("/json")
-	public @ResponseBody TestObject nameRequest(
-			@RequestParam(value="name", required=false, defaultValue="defaultName") String name) {
-		return new TestObject(name);
+	@RequestMapping("/api/recommendations")
+	public @ResponseBody RecommendationsData recommendationsRequest () {
+		RecommendationsData out = new RecommendationsData();
+		
+		return out;
 	}
 }
+
