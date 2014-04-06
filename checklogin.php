@@ -13,6 +13,7 @@
 	$row  = mysql_fetch_array($result);
 	if(is_array($row)) {
 		$islog = true;
+		$_SESSION['User'] = $email;
 	} 
 	else {
 		$islog = false;

@@ -51,7 +51,6 @@ background-size:100% 100%;
 					
 					var data=JSON.parse(xmlhttp.responseText);
 					if (data == true) {
-			
 						$("#t1").click(); // simulate link click 
 					}
 					else {
@@ -73,13 +72,13 @@ background-size:100% 100%;
 			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
 		</tr>
 	</table>
-	<a id="t1" href="#tab1"  data-transition="pop" ></a>
+	<a id="t1" href="#setpref"  data-transition="pop" ></a>
 	<div id="txtHint"></div>
 	<form name="bob" id="bob" action="JavaScript:credCheck();" style="z-index:4;" method="post"><br><br><center>
-		<input  style="width:75%;z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
-		<input style="z-index:7;width:75%;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
-		<button name="bob" id="bob" style="width:50%;z-index:4; padding-top:10px; padding-bottom:10px;"  class="ui-btn ui-corner-all" type="submit">Login</button>
-		<a href="#newuser"data-role="button" data-rel="page" data-transition="pop">New User </a>
+		<input  style="width:70%;position:absolute;top:35.25%;left:17%;height:4.25%;z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
+		<input style="width:70%;position:absolute;top:46%;height:4.25%;left:17%;;z-index:7;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
+		<button style="top:60%;height:4.2%;left:33%" name="bob" id="bob" style="width:50%;z-index:4; padding-top:10px; padding-bottom:10px;"  class="ui-btn ui-corner-all" type="submit">Login</button>
+		<a style="top:75%;left:33%" href="#newuser"data-role="button" data-rel="page" data-transition="pop">New User </a>
 		
 	</form>
 	<script>
@@ -92,7 +91,11 @@ background-size:100% 100%;
 			z-index:100; !important;
 		}
 		.ui-btn{
-			width: 300px !important;
+			width: 30% !important;
+			top:57%;
+		
+			left: 33%;
+			position: absolute;
 		}
 	</style>
 
@@ -100,7 +103,7 @@ background-size:100% 100%;
 	
  
 		
-		<p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+		
 	</div><!-- /content -->
 	
 	<div data-role="footer" data-theme="d">
@@ -231,9 +234,9 @@ background-size:100% 100%;
 	
 <table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
 		<tr>
-			<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+			<td><a data-transition="flow" href="#tab1" id="email" ><img src="RecommendationButton.png" height="40%" width="100%" onMouseOver="this.src='RecommendationButton.png'" onMouseOut="this.src='RecommendationButton.png'"></a></td>
 		
-			<td><a href="#one" id="skull"><img src="http://i.imgur.com/FDLG9I3.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='http://i.imgur.com/FDLG9I3.png'"></a></td>
+			<td><a href="#one" id="skull"><img src="DiscussionButtonUnselected.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='DiscussionButtonUnselected.png'"></a></td>
 		
 			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
 		</tr>
@@ -264,7 +267,7 @@ background-size:100% 100%;
 						image = "CloudySunnyButton.png";
 					if(data.beaches[0].weather == "Slightly Cloudy")
 						image = "CloudySunnyButton.png";
-					document.querySelector('#weather').innerHTML = "<img align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
+					document.querySelector('#weather').innerHTML = "<img title='HI' href='#tab3' align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
 					document.querySelector('#names').innerHTML = "<h1>"+data.beaches[0].name+"</h1>";
 					document.querySelector('#temp').innerHTML = "<h1>"+data.beaches[0].temperature+"&#176; F</h1>";
 					getLocation(data.beaches[0].latitude, data.beaches[0].longitude, 0);
@@ -282,7 +285,7 @@ background-size:100% 100%;
 						image = "CloudySunnyButton.png";
 					if(data.beaches[1].weather == "Slightly Cloudy")
 						image = "CloudySunnyButton.png";
-					document.querySelector('#weather1').innerHTML = "<img align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
+					document.querySelector('#weather1').innerHTML = "<img href='#tab3' align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
 					document.querySelector('#names1').innerHTML = "<h1>"+data.beaches[1].name+"</h1>";
 					document.querySelector('#temp1').innerHTML = "<h1>"+data.beaches[1].temperature+"&#176; F</h1>";
 					getLocation(data.beaches[1].latitude, data.beaches[1].longitude, 1);
@@ -326,7 +329,7 @@ function showPosition(position)
 		document.querySelector('#distance1').innerHTML = "<h2>"+findis+" Km</h2>";
   }
 	</script>
-
+		<a href="#tab3" style="text-decoration:none;">
 		<div id="weather" style="width:100%;position:absolute; top:53%;">
 		</div>
 		<div id="distance" style="position:absolute; top:59%; left:53%;">
@@ -335,7 +338,8 @@ function showPosition(position)
 		</div>
 		<div style="position:absolute;top:51.5%;left:53%;" id="temp">
 		</div>
-		
+		</a>
+		<a href="#tab3" style="text-decoration:none;">
 		<div id="weather1" style="width:100%;position:absolute; top:33%;">
 		</div>
 		<div id="distance1" style="position:absolute; top:39%; left:53%;">
@@ -344,25 +348,96 @@ function showPosition(position)
 		</div>
 		<div style="position:absolute;top:31.5%;left:53%;" id="temp1">
 		</div>
+		</a>
 </div><!-- /page two -->
-
+<div data-role="page" id="tab3">
+<table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+	<tr>
+		<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		<td><a href="#one" id="skull"><img src="DiscussionButtonUnselected.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='DiscussionButtonUnselected.png'"></a></td>
+		<td><a href="#tab3" data-transition="flow" id="chat" ><img src="WeatherButton.png" height="40%" width="100%" onMouseOver="this.src='WeatherButton.png'" onMouseOut=		"this.src='WeatherButton.png'"></a></td>
+	</tr>
+</table>
+  <div data-role="header">
+   
+  <h1>Details</h1>
+  </div>
+ </div>
 
 <!-- Start of third page: #popup -->
-<div data-role="page" id="tab3">
+<div data-role="page" id="setpref">
 
-	<div data-role="header" data-theme="a">
-		<h1>Dialog</h1>
-	</div><!-- /header -->
+  <div data-role="header">
+   
+  <h1>Surfing Preferences</h1>
+  </div>
+<script>
+	function changeData()  {
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		var x3 = document.getElementById('x3').value;
+		var x4 = document.getElementById('x4').value;
+		var x5 = document.getElementById('x5').value;
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var data=JSON.parse(xmlhttp.responseText);
+				
+			}
+			$("#t4").click();
+		}
+		xmlhttp.open("GET","changeData.php?x1=" + x1 + "&&x2=" + x2 +"&&x3=" + x3+"&&x4=" + x4+"&&x5=" + x5 ,true);
+		xmlhttp.send();
+	}
+	</script>
+	<a id="t4" href="#tab1"  data-transition="pop" ></a>
 
-	<div data-role="content" data-theme="d">	
-		<h2>Popup</h2>
-		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
-		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
-	</div><!-- /content -->
-	
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
+<style>
+		input {
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			border:solid 1px black;
+			padding:5px;
+			height:4%;
+			width:36%;
+	}
+	#newuser
+{
+background: #000;
+background-image: url(hot.png);
+background-size:100% 100%; 
+}
+	</style>
+<div data-role='main' class='ui-content'>
+    <form id="hob" name="hob" method='post' action='JavaScript:changeData();'>
+      <label for='points'>X1:</label>
+      <input type='range' name='x1' id='x1' value='50' min='0' max='100'><br><br>
+	   <label for='points'>X2:</label>
+      <input type='range' name='x2' id='x2' value='50' min='0' max='100'><br><br>
+	  <label for='points'>X3:</label>
+      <input type='range' name='x3' id='x3' value='50' min='0' max='100'><br><br>
+	  <label for='points'>X4:</label>
+      <input type='range' name='x4' id='x4' value='50' min='0' max='100'><br><br>
+	  <label for='points'>X5:</label>
+      <input type='range' name='x5' id='x5'value='50' min='0' max='100'><br><br>
+      <input type='submit'class="ui-btn ui-corner-all"  value='Update Prefences'>
+    </form>
+  </div>
+  <table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+		<tr>
+			<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		
+			<td><a href="#one" id="skull"><img src="http://i.imgur.com/FDLG9I3.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='http://i.imgur.com/FDLG9I3.png'"></a></td>
+		
+			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
+		</tr>
+	</table>
+</div>
+
+		
+
+  
+
 </div><!-- /page popup -->
 
 </body>
