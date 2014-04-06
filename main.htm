@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>App</title> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+
+	
+<body> 
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one" background="Hot.png">
+
+	<div data-role="header" style="z-index:4;">
+		<h1>Login</h1>
+	</div>
+	
+	<style>
+		input {
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			border:solid 1px black;
+			padding:5px;
+			height:4%;
+			width:36%;
+	}
+	.ui-page
+{
+background: #000;
+background-image:url(hot.png);
+background-size:cover;  
+}
+	</style>
+	<script>
+		function credCheck()  {
+			
+			var pass = document.getElementById('pass').value;
+			var email = document.getElementById('user').value;
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					
+					var data=JSON.parse(xmlhttp.responseText);
+					if (data == true) {
+			
+						$("#t1").click(); // simulate link click        
+					}
+					else {
+						document.getElementById("txtHint").innerHTML="<font color='red'><center>Error. Wrong Username or Password</center></font>";
+					}
+					
+				}
+			}
+			xmlhttp.open("GET","checklogin.php?email=" + email + "&&pass=" + pass,true);
+			xmlhttp.send();
+		}
+	</script>
+	<table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+		<tr>
+			<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		
+			<td><a href="#one" id="skull"><img src="http://i.imgur.com/FDLG9I3.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='http://i.imgur.com/FDLG9I3.png'"></a></td>
+		
+			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
+		</tr>
+	</table>
+	<a id="t1" href="#tab1"  data-transition="pop" ></a>
+	<div id="txtHint"></div>
+	<form name="bob" id="bob" action="JavaScript:credCheck();" style="z-index:4;" method="post"><br><br><center>
+		<input  style="z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
+		<input style="z-index:7;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
+		<button style="z-index:4;"  class="ui-btn ui-corner-all" type="submit">Login</button>
+		<a href="#newuser"data-role="button" data-rel="page" data-transition="pop">New User </a>
+
+	</form>
+	<style>
+		button {
+			background: transparent;
+			border: none !important;
+		}
+	</style>
+
+	
+	
+ 
+		
+		<p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-theme="d">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div data-theme: "a" data-role="page" id="newuser">
+	<div data-role="header" style="z-index:4;">
+		<h1>Create Account</h1>
+	</div>
+	
+	<style>
+		input {
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			border:solid 1px black;
+			padding:5px;
+			height:4%;
+			width:36%;
+	}
+	.ui-page
+{
+background: #000;
+background-image:url(hot.png);
+background-size:cover;  
+}
+	</style>
+	<script>
+		function canDoCheck()  {
+			var name = document.getElementById('name').value;
+			var pass = document.getElementById('pass').value;
+			var email = document.getElementById('user').value;
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					console.log(name);
+					var data=JSON.parse(xmlhttp.responseText);
+					alert(data);
+					if (data == true) {
+						    document.getElementById("txtHint").innerHTML="<font color='red'><center>Error. User name already exists!</center></font>"; 
+					}
+					else {
+						$("#t1").click(); // simulate link click   
+						
+					}
+				}
+			}
+			xmlhttp.open("GET","new_user.php?email=" + email + "&&pass=" + pass "&&name=" + name,true);
+			xmlhttp.send();
+		}
+	</script>
+	<table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+		<tr>
+			<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		
+			<td><a href="#one" id="skull"><img src="http://i.imgur.com/FDLG9I3.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='http://i.imgur.com/FDLG9I3.png'"></a></td>
+		
+			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
+		</tr>
+	</table>
+	<a id="t1" href="#one"  data-transition="pop" ></a>
+	<div id="txtHint"></div>
+	<form name="hib" id="hib" action="JavaScript:canDoCheck();" style="z-index:4;" method="post"><br><br><center>
+		<input  style="z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
+		<input style="z-index:7;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
+		<input style="z-index:7;" type="text" name="name" id="name" placeholder="Full Name" value=""/><br><br>
+		<button style="z-index:4;"  class="ui-btn ui-corner-all" type="submit">Create Account</button>
+		<a href="#one"data-role="button" data-rel="page" data-transition="pop"> Already Have an Account </a>
+
+	</form>
+	<style>
+		button {
+			background: transparent;
+			border: none !important;
+		}
+	</style>
+
+	
+	
+ 
+		
+		
+		<p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+		
+	</div><!-- /content -->
+	
+
+
+
+<!-- Start of second page: #two -->
+<div data-role="page" id="tab1" data-theme="a">
+
+	<style>
+		input {
+			-moz-border-radius: 15px;
+			border-radius: 15px;
+			border:solid 1px black;
+			padding:5px;
+			height:4%;
+			width:36%;
+	}
+	.ui-page
+{
+background: #000;
+background-image:url(MainScreenBackground.png);
+background-size:cover;  
+}
+	</style>
+	<div data-role="header">
+		<h1>Recommended Surf Spots</h1>
+	</div><!-- /header -->
+	<script>
+		run();
+		function run()  {
+			var name = document.getElementById('name').value;
+			var pass = document.getElementById('pass').value;
+			var email = document.getElementById('user').value;
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					var data=JSON.parse(xmlhttp.responseText);
+					console.log(data);
+				}
+			}
+			xmlhttp.open("GET","http://penguintoast.no-ip.biz:8080/api/recommendations",true);
+			xmlhttp.send();
+		}
+	</script>
+	<div data-role="content" data-theme="a">	
+		<h2>Two</h2>
+		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>	
+		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>	
+		<p><a href="#one" data-direction="reverse" data-role="button" data-theme="b">Back to page "one"</a></p>	
+		
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+	<div data-role="header" data-theme="e">
+		<h1>Dialog</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="d">	
+		<h2>Popup</h2>
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>		
+		<p><a href="#one" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back to page "one"</a></p>	
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page popup -->
+
+</body>
+</html>
