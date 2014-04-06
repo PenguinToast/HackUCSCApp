@@ -1,13 +1,9 @@
 package com.fillername.hackucscapp.net;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.client.ClientProtocolException;
-
-import com.fillername.hackucscapp.core.BeachData;
 import com.fillername.hackucscapp.core.DataStore;
+import com.fillername.hackucscapp.core.DetailsData;
 
 /**
  * This class refreshes the API information at regular intervals
@@ -23,19 +19,14 @@ public class APIRefreshTask implements Runnable {
 	public void run() {
 		while(true) {
 			System.out.println("@@@ REFRESHING API DATA");
-			List<BeachData> spotsDataList = null;
-			try {
-				spotsDataList = API.get().getWeatherData();
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			DataStore.setBeachDatas(spotsDataList);
+			List<DetailsData> spotsDataList = null;
 			System.out.println("@@@ DONE REFRESHING");
 			try {
+				DataStore.setSunriseList(API.get().getSunrises());
+				DataStore.setTideList(API.get().getTideDatas());
+				
 				Thread.sleep(REFRESH_INTERVAL);
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
