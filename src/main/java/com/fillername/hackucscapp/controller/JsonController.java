@@ -34,6 +34,8 @@ public class JsonController {
 		testBeach.setWeather(testWeather);
 		testBeach.setTemperature(9001);
 		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach);
 		return out;
 	}
 	
