@@ -70,4 +70,8 @@ public class DetailsData extends BeachData {
 	public void setSwellTimes(ArrayList<String> swellTimes) {
 		this.swellTimes = swellTimes;
 	}
+	
+	public ArrayList<SwellData> getSwells() {
+		return swells;
+	}
 }
