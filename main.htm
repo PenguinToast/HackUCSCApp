@@ -16,7 +16,7 @@
 <body> 
 
 <!-- Start of first page: #one -->
-<div data-role="page" id="one" background="Hot.png">
+<div data-role="page" id="one">
 
 	<div data-role="header" style="z-index:4;">
 		<h1>Login</h1>
@@ -31,13 +31,15 @@
 			height:4%;
 			width:36%;
 	}
-	.ui-page
+	#one
 {
 background: #000;
-background-image:url(hot.png);
-background-size:cover;  
+background-image:url(layout.png), url(hot.png);
+background-size:100% 100%;
+
 }
 	</style>
+	
 	<script>
 		function credCheck()  {
 			
@@ -50,7 +52,7 @@ background-size:cover;
 					var data=JSON.parse(xmlhttp.responseText);
 					if (data == true) {
 			
-						$("#t1").click(); // simulate link click        
+						$("#t1").click(); // simulate link click 
 					}
 					else {
 						document.getElementById("txtHint").innerHTML="<font color='red'><center>Error. Wrong Username or Password</center></font>";
@@ -74,16 +76,23 @@ background-size:cover;
 	<a id="t1" href="#tab1"  data-transition="pop" ></a>
 	<div id="txtHint"></div>
 	<form name="bob" id="bob" action="JavaScript:credCheck();" style="z-index:4;" method="post"><br><br><center>
-		<input  style="z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
-		<input style="z-index:7;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
-		<button style="z-index:4;"  class="ui-btn ui-corner-all" type="submit">Login</button>
+		<input  style="width:75%;z-index:7;" type="text" name="user" id="user" placeholder="Username" value=""/><br><br>
+		<input style="z-index:7;width:75%;" type="password" name="pass" id="pass" placeholder="Password" value=""/><br><br>
+		<button name="bob" id="bob" style="width:50%;z-index:4; padding-top:10px; padding-bottom:10px;"  class="ui-btn ui-corner-all" type="submit">Login</button>
 		<a href="#newuser"data-role="button" data-rel="page" data-transition="pop">New User </a>
-
+		
 	</form>
-	<style>
+	<script>
+		$('bob').css({ width: '20px', 'padding-top': '10px', 'padding-bottom': '10px' });
+	</script>
+	<style>0
 		button {
 			background: transparent;
 			border: none !important;
+			z-index:100; !important;
+		}
+		.ui-btn{
+			width: 300px !important;
 		}
 	</style>
 
@@ -122,7 +131,6 @@ background-size:cover;
 	<div data-role="header" style="z-index:4;">
 		<h1>Create Account</h1>
 	</div>
-	
 	<style>
 		input {
 			-moz-border-radius: 15px;
@@ -132,13 +140,14 @@ background-size:cover;
 			height:4%;
 			width:36%;
 	}
-	.ui-page
+	#newuser
 {
 background: #000;
-background-image:url(hot.png);
-background-size:cover;  
+background-image: url(hot.png);
+background-size:100% 100%; 
 }
 	</style>
+	
 	<script>
 		function canDoCheck()  {
 			var name = document.getElementById('name').value;
@@ -202,9 +211,8 @@ background-size:cover;
 
 
 <!-- Start of second page: #two -->
-<div data-role="page" id="tab1" data-theme="a">
-
-	<style>
+<div data-role="page" id="tab1">
+<style>
 		input {
 			-moz-border-radius: 15px;
 			border-radius: 15px;
@@ -213,18 +221,29 @@ background-size:cover;
 			height:4%;
 			width:36%;
 	}
-	.ui-page
+	#tab1
 {
 background: #000;
 background-image:url(MainScreenBackground.png);
-background-size:cover;  
+background-size:100% 100%;  
 }
 	</style>
+	
+<table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+		<tr>
+			<td><a data-transition="flow" href="#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		
+			<td><a href="#one" id="skull"><img src="http://i.imgur.com/FDLG9I3.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='http://i.imgur.com/FDLG9I3.png'"></a></td>
+		
+			<td><a href="#tab3" data-transition="flow" id="chat" ><img src="http://imgur.com/cMRXS8B.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/TkJ1Xzc.png'" onMouseOut=		"this.src='http://imgur.com/cMRXS8B.png'"></a></td>
+		</tr>
+	</table>
 	<div data-role="header">
 		<h1>Recommended Surf Spots</h1>
 	</div><!-- /header -->
 	<script>
 		run();
+		var x=document.getElementById("demo");
 		function run()  {
 			var name = document.getElementById('name').value;
 			var pass = document.getElementById('pass').value;
@@ -233,31 +252,105 @@ background-size:cover;
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 					var data=JSON.parse(xmlhttp.responseText);
-					console.log(data);
+					data.beaches[0].weather;
+					var image;
+					if(data.beaches[0].weather == "Sunny")
+						image = "SunnyButton.png";
+					if(data.beaches[0].weather == "Rain")
+						image = "RainButton.png";
+					if(data.beaches[0].weather == "Cloudy Rainy")
+						image ="CloudyRainyButton.png";
+					if(data.beaches[0].weather == "Cloudy Sunny")
+						image = "CloudySunnyButton.png";
+					if(data.beaches[0].weather == "Slightly Cloudy")
+						image = "CloudySunnyButton.png";
+					document.querySelector('#weather').innerHTML = "<img align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
+					document.querySelector('#names').innerHTML = "<h1>"+data.beaches[0].name+"</h1>";
+					document.querySelector('#temp').innerHTML = "<h1>"+data.beaches[0].temperature+"&#176; F</h1>";
+					getLocation(data.beaches[0].latitude, data.beaches[0].longitude, 0);
+					
+					
+					data.beaches[1].weather;
+					var image;
+					if(data.beaches[1].weather == "Sunny")
+						image = "SunnyButton.png";
+					if(data.beaches[1].weather == "Rain")
+						image = "RainButton.png";
+					if(data.beaches[1].weather == "Cloudy Rainy")
+						image ="CloudyRainyButton.png";
+					if(data.beaches[1].weather == "Cloudy Sunny")
+						image = "CloudySunnyButton.png";
+					if(data.beaches[1].weather == "Slightly Cloudy")
+						image = "CloudySunnyButton.png";
+					document.querySelector('#weather1').innerHTML = "<img align='center' style='width:50%;left:25%;position:absolute; top:20%;' src='" + image + "'>";
+					document.querySelector('#names1').innerHTML = "<h1>"+data.beaches[1].name+"</h1>";
+					document.querySelector('#temp1').innerHTML = "<h1>"+data.beaches[1].temperature+"&#176; F</h1>";
+					getLocation(data.beaches[1].latitude, data.beaches[1].longitude, 1);
 				}
 			}
 			xmlhttp.open("GET","http://penguintoast.no-ip.biz:8080/api/recommendations",true);
 			xmlhttp.send();
 		}
-	</script>
-	<div data-role="content" data-theme="a">	
-		<h2>Two</h2>
-		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>	
-		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>	
-		<p><a href="#one" data-direction="reverse" data-role="button" data-theme="b">Back to page "one"</a></p>	
+		var lati, longit;
+		var dit;
 		
-	</div><!-- /content -->
+		function getLocation(lat, longi, di)
+  {
+	dit = di;
+	lati = lat; 
+	longit = longi;
+  if (navigator.geolocation)
+    {
 	
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+	var lat2 = (position.coords.latitude) * (Math.PI/180);
+	var long2 = (position.coords.longitude) * (Math.PI/180);
+	var R = 6371;
+	var dLat = (lati  - lat2) * (Math.PI/180);
+	var dLon = (longit - long2) * (Math.PI/180);
+	var lat1 = lati * (Math.PI/180);
+	var lat2 = lat2 * (Math.PI/180);
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c;
+	var findis = (d * 0.621371).toFixed(2);
+
+		document.querySelector('#distance').innerHTML = "<h2>"+findis+" Km</h2>";
+
+		document.querySelector('#distance1').innerHTML = "<h2>"+findis+" Km</h2>";
+  }
+	</script>
+
+		<div id="weather" style="width:100%;position:absolute; top:53%;">
+		</div>
+		<div id="distance" style="position:absolute; top:59%; left:53%;">
+		</div>
+		<div style="position:absolute;top:51.5%;left:26%;" id="names">
+		</div>
+		<div style="position:absolute;top:51.5%;left:53%;" id="temp">
+		</div>
+		
+		<div id="weather1" style="width:100%;position:absolute; top:33%;">
+		</div>
+		<div id="distance1" style="position:absolute; top:39%; left:53%;">
+		</div>
+		<div style="position:absolute;top:31.5%;left:26%;" id="names1">
+		</div>
+		<div style="position:absolute;top:31.5%;left:53%;" id="temp1">
+		</div>
 </div><!-- /page two -->
 
 
 <!-- Start of third page: #popup -->
-<div data-role="page" id="popup">
+<div data-role="page" id="tab3">
 
-	<div data-role="header" data-theme="e">
+	<div data-role="header" data-theme="a">
 		<h1>Dialog</h1>
 	</div><!-- /header -->
 
