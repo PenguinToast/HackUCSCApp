@@ -33,6 +33,8 @@ public class JsonController {
 		testBeach.setWeather(testWeather);
 		testBeach.setTemperature(9001);
 		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach);
 		return out;
 	}
 	
@@ -40,7 +42,9 @@ public class JsonController {
 	public @ResponseBody MapData mapRequest() {
 		MapData out = new MapData();
 		BeachMapData testBeach = new BeachMapData(testId, testName, testLong, testLat);
+		BeachMapData testBeach2 = new BeachMapData(testId, testName, testLong - 70, testLat);
 		out.getBeaches().add(testBeach);
+		out.getBeaches().add(testBeach2);
 		return out;	
 	}
 	

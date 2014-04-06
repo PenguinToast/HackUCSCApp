@@ -83,4 +83,8 @@ public class DetailsData extends BeachData {
 	public void setSunrises(ArrayList<Date> sunrises) {
 		this.sunrises = sunrises;
 	}
+	
+	public ArrayList<SwellData> getSwells() {
+		return swells;
+	}
 }
