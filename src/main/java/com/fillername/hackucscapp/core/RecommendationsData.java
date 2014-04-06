@@ -19,6 +19,7 @@ public class RecommendationsData {
 	public static class BeachRecommendationData extends BeachData {
 		private final double longitude, latitude;
 		private String weather;
+		private int temperature;
 		
 		public BeachRecommendationData(int id, String name, double longitude, double latitude) {
 			super(id, name);
@@ -40,6 +41,14 @@ public class RecommendationsData {
 		
 		public void setWeather(String weather) {
 			this.weather = weather;
+		}
+		
+		public int getTemperature() {
+			return temperature;
+		}
+		
+		public void setTemperature(int temperature) {
+			this.temperature = temperature;
 		}
 		
 	}

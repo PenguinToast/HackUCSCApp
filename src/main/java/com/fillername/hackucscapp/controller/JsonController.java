@@ -19,13 +19,14 @@ public class JsonController {
 	private static double testLong = 6969.69d;
 	private static String testName = "Test Beach";
 	private static int testId = 0;
-	private static String testWeather = "Cloudy With a Chance of Meatballs";
+	private static String testWeather = "Slightly Cloudy";
 	
 	@RequestMapping("/api/recommendations")
 	public @ResponseBody RecommendationsData recommendationsRequest() {
 		RecommendationsData out = new RecommendationsData();
 		BeachRecommendationData testBeach = new BeachRecommendationData(testId, testName, testLong, testLat);
 		testBeach.setWeather(testWeather);
+		testBeach.setTemperature(9001);
 		out.getBeaches().add(testBeach);
 		return out;
 	}
@@ -46,7 +47,7 @@ public class JsonController {
 		out.setSwell("Wow Very Swell");
 		out.setTemperature(9001);
 		out.setSunrise(new Date());
-		out.setSunrise(new Date());
+		out.setSunset(new Date());
 		int numPoints = 4 * 7;
 		for (int i = 0; i < numPoints; i++) {
 			out.getTides().add(Math.sin(i));
