@@ -106,9 +106,7 @@ background-size:100% 100%;
 		
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-theme="d">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
+	
 </div><!-- /page one -->
 
 
@@ -361,8 +359,14 @@ function showPosition(position)
   <div data-role="header">
    
   <h1>Details</h1>
+	
+	
   </div>
+<iframe src="index.html?id=1" height="100%" width="100%" style="position:absolute; top:20%; left:0%; height:100%; width:100%;"></iframe>
+<a href="map.htm" data-ajax="false" style="position: absolute; top:10%; "type="button" data-rel="external">Open Map</a>
  </div>
+ 
+
 
 <!-- Start of third page: #popup -->
 <div data-role="page" id="setpref">
@@ -410,15 +414,15 @@ background-size:100% 100%;
 	</style>
 <div data-role='main' class='ui-content'>
     <form id="hob" name="hob" method='post' action='JavaScript:changeData();'>
-      <label for='points'>X1:</label>
+      <label for='points'>Swell:</label>
       <input type='range' name='x1' id='x1' value='50' min='0' max='100'><br><br>
-	   <label for='points'>X2:</label>
+	   <label for='points'>Tide:</label>
       <input type='range' name='x2' id='x2' value='50' min='0' max='100'><br><br>
-	  <label for='points'>X3:</label>
+	  <label for='points'>Wind:</label>
       <input type='range' name='x3' id='x3' value='50' min='0' max='100'><br><br>
-	  <label for='points'>X4:</label>
+	  <label for='points'>Time:</label>
       <input type='range' name='x4' id='x4' value='50' min='0' max='100'><br><br>
-	  <label for='points'>X5:</label>
+	  <label for='points'>Weather:</label>
       <input type='range' name='x5' id='x5'value='50' min='0' max='100'><br><br>
       <input type='submit'class="ui-btn ui-corner-all"  value='Update Prefences'>
     </form>
@@ -433,10 +437,6 @@ background-size:100% 100%;
 		</tr>
 	</table>
 </div>
-
-		
-
-  
 
 </div><!-- /page popup -->
 

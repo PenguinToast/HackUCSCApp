@@ -1,0 +1,63 @@
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+	getData();
+	var arr = new Array(40);
+	function getData()  {
+		var xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var data=JSON.parse(xmlhttp.responseText);
+				console.log(data);
+				for (var x = 0; x < data.beaches.length; x++ ) {
+					console.log("OMGOGMOGOGMOGMGO");
+					var myLatlng = new google.maps.LatLng(data.beaches[x].latitude,data.beaches[x].longitude);
+					arr[x] = myLatlng;
+					console.log(arr[x]);
+
+				}
+				initialize(arr);
+			}
+		}
+		xmlhttp.open("GET","http://penguintoast.no-ip.biz:8080/api/map" ,true);
+		xmlhttp.send();
+	}
+	function initialize(arr) {
+  var mapOptions = {
+    zoom: 4,
+    center: arr[0]
+  }
+  console.log(arr[0]);
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  for (var x = 0; x < arr.length; x++) {
+	if (arr[x] != null) {
+		var marker = new google.maps.Marker({
+			position: arr[x],
+			map: map,
+			title: 'Hello World!'
+		});
+	}
+  }
+  
+ 
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+  <table style="z-index:500;position:fixed; bottom:0;right:0;" border="0"  cellspacing="0" cellpadding="0">
+	<tr>
+		<td><a data-transition="flow" href="main.htm#tab1" href="http:/www.google.com" id="email" ><img src="http://imgur.com/JOiuxC4.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/xedSdTz.png'" onMouseOut="this.src='http://imgur.com/JOiuxC4.png'"></a></td>
+		<td><a href="main.htm#one" id="skull"><img src="DiscussionButtonUnselected.png" height="40%" width="100%" onMouseOver="this.src='http://i.imgur.com/FDLG9I3.png'" onMouseOut="this.src='DiscussionButtonUnselected.png'"></a></td>
+		<td><a href="main.htm#tab3" data-transition="flow" id="chat" ><img src="WeatherButton.png" height="40%" width="100%" onMouseOver="this.src='WeatherButton.png'" onMouseOut=		"this.src='WeatherButton.png'"></a></td>
+	</tr>
+</table>
