@@ -20,20 +20,11 @@ public class APIRefreshTask implements Runnable {
 		while(true) {
 			System.out.println("@@@ REFRESHING API DATA");
 			List<DetailsData> spotsDataList = null;
-			/*try {
-				//spotsDataList = API.get().getWeatherData();
-				//API.get().getTideDatas();
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}*/
-			
-			DataStore.setBeachDatas(spotsDataList);
 			System.out.println("@@@ DONE REFRESHING");
 			try {
-				API.get().getTideDatas();
-				API.get().getSunrises();
+				DataStore.setSunriseList(API.get().getSunrises());
+				DataStore.setTideList(API.get().getTideDatas());
+				
 				Thread.sleep(REFRESH_INTERVAL);
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -124,7 +124,7 @@ public class API {
 				String ft = tds.get(2).text();
 				feet = Double.parseDouble(ft.substring(0, ft.indexOf(' ')));
 				boolean isHighTide = tides.get(i).select("td").last().text().contains("H");
-				System.out.println(date.toString() + " @@ " + feet + " @@ " + isHighTide);
+				//System.out.println(date.toString() + " @@ " + feet + " @@ " + isHighTide);
 				
 				TideData td = new TideData(date, feet, isHighTide);
 				currData.add(td);
@@ -135,7 +135,7 @@ public class API {
 		System.out.println("@@@ GOT JSOUP DOC w/ TITLE: " + doc.text());
 		
 		for(TideData tide : currData) {
-			System.out.println("!!!! " + tide.getTime());
+			System.out.println("!!!! " + tide.getHeight());
 		}
 		
 		return null;
@@ -190,9 +190,9 @@ public class API {
 		}
 		
 		System.out.println("SUN: " + currData.size());
-		for(SunriseData sun : currData) {
+		/*for(SunriseData sun : currData) {
 			System.out.println("!!!! " + sun.getSunriseOrSunset());
-		}
+		}*/
 		
 		return currData;
 	}

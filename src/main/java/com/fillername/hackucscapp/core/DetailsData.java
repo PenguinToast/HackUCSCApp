@@ -13,7 +13,8 @@ public class DetailsData extends BeachData {
 	private ArrayList<String> swellTimes;
 	
 	private Date sunrise, sunset;
-	private ArrayList<TideData> tides;
+	private ArrayList<Double> tides;
+	private ArrayList<Date> sunrises;
 	private ArrayList<Boolean> recommended;
 	
 	public DetailsData(int id, String name) {
@@ -55,11 +56,11 @@ public class DetailsData extends BeachData {
 		this.sunset = sunset;
 	}
 
-	public ArrayList<TideData> getTides() {
+	public ArrayList<Double> getTides() {
 		return tides;
 	}
 	
-	public void setTides(ArrayList<TideData> t) {
+	public void setTides(ArrayList<Double> t) {
 		tides = t;
 	}
 
@@ -73,5 +74,13 @@ public class DetailsData extends BeachData {
 
 	public void setSwellTimes(ArrayList<String> swellTimes) {
 		this.swellTimes = swellTimes;
+	}
+
+	public ArrayList<Date> getSunrises() {
+		return sunrises;
+	}
+
+	public void setSunrises(ArrayList<Date> sunrises) {
+		this.sunrises = sunrises;
 	}
 }
